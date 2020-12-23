@@ -1,0 +1,7 @@
+{
+    "tool-name": "Esperanto-Enigilo",
+    "tool-version": "1.0",
+
+    "toolbar-caption-template": "$1 ($2)",
+    "toolbar-file-caption-accesskey": "F"
+}

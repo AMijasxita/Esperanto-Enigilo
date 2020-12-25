@@ -3,5 +3,7 @@
     "tool-version": "1.0",
 
     "toolbar-caption-template": "$1 ($2)",
-    "toolbar-file-caption-accesskey": "F"
+    "toolbar-file-caption-accesskey": "F",
+    "toolbar-view-caption-accesskey": "V",
+    "toolbar-help-caption-accesskey": "H"
 }

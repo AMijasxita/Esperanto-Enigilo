@@ -28,7 +28,13 @@ def msg(key, lang = None):
             lang = config('language')
         msgFile = open(r'include\msg\\' + lang + '.json', mode = 'r', encoding = 'utf-8')
         msgJson = json.load(msgFile)
-        return msgJson[key]
+        try:
+            return msgJson[key]
+        except KeyError:
+            mulLang = 'mul'
+            mulMsgFile = open(r'include\msg\\' + mulLang + '.json', mode = 'r', encoding = 'utf-8')
+            mulMsgJson = json.load(mulMsgFile)
+            return mulMsgJson[key]
     return '<' + str(key) + '>'
 
 ### メイン ###
@@ -77,7 +83,7 @@ class EERoot(tk.Tk):
     def __init__(self, *args):
         super().__init__()
 
-        self.title(msg('tool-name', 'mul'))
+        self.title(msg('tool-name'))
         self.iconbitmap(default = 'include\icon.ico')
         self.config(bg = EERoot._themeColor['bg-normal'])
     
@@ -88,25 +94,25 @@ class EERoot(tk.Tk):
         ### [ファイル]
         widToolbarTab_file = EEToolbarButton(widToolbar)
         widToolbarTab_file.config(
-            text = msg('toolbar-caption-template', 'mul') \
+            text = msg('toolbar-caption-template') \
                 .replace('$1', msg('toolbar-file-caption')) \
-                .replace('$2', msg('toolbar-file-caption-accesskey', 'mul'))
+                .replace('$2', msg('toolbar-file-caption-accesskey'))
         )
         widToolbarTab_file.pack(anchor = tk.N, side = tk.LEFT)
         ### [表示]
         widToolbarTab_view = EEToolbarButton(widToolbar)
         widToolbarTab_view.config(
-            text = msg('toolbar-caption-template', 'mul') \
+            text = msg('toolbar-caption-template') \
                 .replace('$1', msg('toolbar-view-caption')) \
-                .replace('$2', msg('toolbar-view-caption-accesskey', 'mul'))
+                .replace('$2', msg('toolbar-view-caption-accesskey'))
         )
         widToolbarTab_view.pack(anchor = tk.N, side = tk.LEFT)
         ### [ヘルプ]
         widToolbarTab_help = EEToolbarButton(widToolbar)
         widToolbarTab_help.config(
-            text = msg('toolbar-caption-template', 'mul') \
+            text = msg('toolbar-caption-template') \
                 .replace('$1', msg('toolbar-help-caption')) \
-                .replace('$2', msg('toolbar-help-caption-accesskey', 'mul'))
+                .replace('$2', msg('toolbar-help-caption-accesskey'))
         )
         widToolbarTab_help.pack(anchor = tk.N, side = tk.LEFT)
         ### 一覧辞書
